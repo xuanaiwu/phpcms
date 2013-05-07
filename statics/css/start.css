@@ -1,0 +1,91 @@
+
+#ep-carousel {
+ POSITION: relative; WIDTH: 978px; MARGIN-BOTTOM: 70px;  HEIGHT: 310px
+}
+#ep-content {
+	POSITION: relative; WIDTH: 978px; HEIGHT: 310px; OVERFLOW: hidden;
+	
+}
+#ep-carousel UL {
+	POSITION: absolute; WIDTH: 978px; HEIGHT: 310px; TOP: 0px; LEFT: 0px
+}
+
+#ep-carousel UL LI {
+	 WIDTH: 978px; FLOAT: left; HEIGHT: 310px
+}
+#ep-carousel UL LI .content {
+	Z-INDEX: 9001; POSITION: relative
+}
+#ep-carousel UL LI .content H3 {
+	TEXT-ALIGN: center; COLOR: #666565; FONT-SIZE: 37px; FONT-WEIGHT: 300; PADDING-TOP: 50px
+}
+#ep-carousel UL LI .content P {
+	PADDING-BOTTOM: 25px; LINE-HEIGHT: 22px; PADDING-LEFT: 100px; PADDING-RIGHT: 100px; COLOR: #929292; FONT-SIZE: 16px; FONT-WEIGHT: 400; PADDING-TOP: 23px
+}
+
+#ep-carousel .epPagination {  left: 0;
+    position: absolute;
+    text-align: center;
+    top: 335px;
+    width: 978px;
+	+left:483px;
+	_left:483px;}
+
+#ep-carousel .epPagination A {
+	TEXT-INDENT: -1000px; WIDTH: 11px; DISPLAY: inline-block; BACKGROUND: url(paginationButton.png); HEIGHT: 14px; OVERFLOW: hidden; MARGIN-RIGHT: 13px
+}
+#ep-carousel .epPagination A:hover {
+	BACKGROUND-POSITION: 0px -15px
+}
+#ep-carousel .epPagination .active {
+	BACKGROUND-POSITION: 0px -15px
+}
+#ep-carousel UL LI .content P.disclaimer {
+	FONT-SIZE: 13px
+}
+.ep-arrow {
+	POSITION: absolute; TEXT-INDENT: -1000px; WIDTH: 18px; DISPLAY: none; BACKGROUND: url(paginationButton.png); HEIGHT: 23px; OVERFLOW: hidden; TOP: 250px
+}
+#ep-arrow-left {
+	BACKGROUND-POSITION: 0px 117px; LEFT: 50px
+}
+#ep-arrow-right {
+	BACKGROUND-POSITION: 0px 64px; RIGHT: 50px
+}
+#ep-arrow-left:hover {
+	BACKGROUND-POSITION: 0px 90px
+}
+#ep-arrow-right:hover {
+	BACKGROUND-POSITION: 0px 38px
+}
+#start-links {
+	PADDING-LEFT: 25px
+}
+#start-links A {
+	PADDING-BOTTOM: 0px; LINE-HEIGHT: 18px; PADDING-LEFT: 160px; WIDTH: 140px; PADDING-RIGHT: 20px; DISPLAY: block; FLOAT: left; HEIGHT: 130px; COLOR: #666666; FONT-SIZE: 14px; PADDING-TOP: 10px
+}
+#start-links A:hover {
+	COLOR: #316cd3
+}
+
+.banner-wrap{   background: none repeat scroll 0 0 #F9F9F9;
+    border-bottom: 1px solid #DBDBDB;
+    margin: 0 -15px;
+	padding-top:20px;
+	}
+	
+#ep-content ul{ margin:0;padding-top:30px;}
+.top5{  right: 0;
+    position: absolute;
+    top: 0;
+	height:308px;
+	border: 1px solid #EEEEEE;
+	overflow:hidden;}
+.top-img{left: 0;
+    position: absolute;
+    top: 0;}	
+
+	.zstart-col-13 {
+    width: 30.3571%;
+	float:left;
+}	

@@ -1,0 +1,336 @@
+{template "content","header"}
+<!--[if IE]>
+<script src="http://a.tbcdn.cn/p/fp/2011a/html5.js"></script>
+<![endif]-->
+<link href="{PLUGIN_STATICS_PATH}loveit/loveit_common.css" type="text/css" rel="stylesheet">
+<link href="{PLUGIN_STATICS_PATH}loveit/loveit_home.css" type="text/css" rel="stylesheet">
+<div style="display:none;">
+<OBJECT id="PC_Capture" classid="clsid:021E8C6F-52D4-42F2-9B36-BCFBAD3A0DE4" ><PARAM NAME="_Version" VALUE="0"><PARAM NAME="_ExtentX" VALUE="0"><PARAM NAME="_ExtentY" VALUE="0"><PARAM NAME="_StockProps" VALUE="0"></OBJECT>
+</div>
+<section id="main">
+    	<!--mod_editor-->
+		<article class="mod_editor">
+			<h3 class="title">发点什么</h3>
+			<div class="cell_my_avatar">
+<p class="avatar" style="background:url({$avatar[90]}) no-repeat;"><a href="{$homepage}"></a></p>
+</div>
+			<div id="tuitaInput" class="content bg_a">
+				<div class="icon_horn"></div>
+				<ul class="tab">
+	<li attr="inner:wordContainer">
+		<button hidefocus onclick="showUrl()"><img src="{PLUGIN_STATICS_PATH}loveit/img/icon.png" class="icon_short_article" alt="网址" />网址</button>
+		<span class="arrow"></span>
+	</li>
+	<li attr="inner:photoContainer">
+		<button hidefocus onclick="showPic()"><img src="{PLUGIN_STATICS_PATH}loveit/img/icon.png" class="icon_photo" alt="照片" />照片</button>
+		<span class="arrow"></span>
+	</li>
+	<li attr="inner:blogContainer">
+		<button hidefocus onclick="showFile()"><img src="{PLUGIN_STATICS_PATH}loveit/img/icon.png" class="icon_article" alt="文档" />文档</button>
+		<span class="arrow"></span>
+	</li>
+	<li attr="inner:blogContainer">
+		<button hidefocus onclick="window.location='plugin.php?id=loveit'"><img src="{PLUGIN_STATICS_PATH}loveit/img/icon.png" class="icon_video" alt="广场" />广场</button>
+		<span class="arrow"></span>
+	</li>
+</ul>
+				<div id="postid" style="display:none;position:static" class="post">
+
+                    <!--url-->
+                    <div id="showUrl" style="display:none" class="cell_video">
+						<p>输入网页的地址</p>
+						<p class="input_box">
+						<input type="text" class="text" name="q" id="loveurl" value="http://" />
+						
+						</p>
+						<span class="r">
+								<a class="cancel_btn" href="javascript:void(0)" onclick="cancelSubmitUrl()">取消</a>
+                                <a class="review_btn" href="javascript:void(0)" onclick="submitUrl()">喜欢她</a>
+                            </span>
+						
+                    </div>
+                    <!--/url-->
+                    <!--photo-->
+                    <div id="showPic" style="display:none" class="cell_photo">
+					<input type="text" class="text" name="pic_title" id="pic_title" value="标题：" onfocus="if(this.value == this.defaultValue) this.value = ''" onblur="if(this.value.replace(' ','') == '') this.value = this.defaultValue;"/>
+					 <div id="install_activex"></div>
+						<img src="{PLUGIN_STATICS_PATH}loveit/img/blank_img.jpg" id="showProcessPic">
+						
+						<div id="showPic_button">
+						<span style="display:inline-block;zoom:1;*display:inline;position:relative; overflow: hidden;">
+						<SCRIPT LANGUAGE="JavaScript">
+						<!--
+							function upload_image(value) {
+							var obj = /(.*?)\.(jpg|jpeg|gif|png)$/;
+								if(obj.test(value)==false) {
+									alert('格式错误：支持jpg、jpeg、gif、png格式，文件小于5M');
+									return false;
+								}
+								document.getElementById("picForm").submit();
+							}
+							//图片-链接
+							function show_pic_url() {
+								$('#show_pic_url').css('display','');
+								$('#showPic_button').css('display','none');
+							}
+							function insert_pic() {
+								var pic_url = $('#pic_url').val();
+								
+								var obj = /(.*?)\.(jpg|jpeg|gif|png)$/;
+								if(obj.test(pic_url)==false) {
+									alert('格式错误：支持jpg、jpeg、gif、png格式，文件小于5M');
+									return false;
+								}
+								$("#showProcessPic").attr('src',pic_url);
+								$("#show_pic_url").css('display',"none");
+								$("#showPic_button").css('display',"none");
+								$("#showPic_submit").css('display',"");
+								$("#pic_url").val('http://');
+
+							}
+						//-->
+						</SCRIPT>
+						<form id="picForm" name="picForm" enctype="multipart/form-data" method="post" target="imageUpload_{SYS_TIME}" action="plugin.php?id=loveit-loveit-upload">
+						<input type="file" tabindex="3" title="支持jpg、jpeg、gif、png格式，文件小于5M" name="upimage" id="upimage" onchange="upload_image(this.value);" style="cursor:pointer;filter:alpha(opacity=0);opacity:0;position:absolute;right:0;height: 34px;">
+						</form>
+						<iframe style="display:none" src="about:blank" name="imageUpload_{SYS_TIME}" id="imageUpload_{SYS_TIME}"></iframe>
+						<a class="review_btn" href="javascript:void(0)" >上传</a></span>
+						<span style="display:inline-block;zoom:1;*display:inline;position:relative; overflow: hidden;"><a class="review_btn" href="javascript:void(0)" onclick="show_pic_url();">链接</a></span>
+						<span style="display:inline-block;zoom:1;*display:inline;position:relative; overflow: hidden;"><a class="review_btn" href="javascript:void(0)" onclick="check_activex();">在线截屏</a></span>
+						</div>
+						<div id="show_pic_url" style="display:none">
+						<input type="text" class="pic_url" name="pic_url" id="pic_url" value="http://" onfocus="if(this.value == this.defaultValue) this.value = ''" onblur="if(this.value.replace(' ','') == '') this.value = this.defaultValue;"/>
+						<span style="display:inline-block;zoom:1;*display:inline;position:relative; overflow: hidden;"><a class="review_btn" href="javascript:void(0)" onclick="insert_pic();">确定</a></span></div>
+						<div id="showPic_submit" style="display:none"><span style="display:inline-block;zoom:1;*display:inline;position:relative; overflow: hidden;"><a class="review_btn" href="javascript:void(0)" onclick="submitImg();">提交</a></span></div>
+                    </div>
+                    <!--/photo-->
+ 
+                    <!--file-->
+                    <div id="showFile" style="display:none" class="cell_file">
+					<input type="text" class="text" name="file_title" id="file_title" value="标题：" onfocus="if(this.value == this.defaultValue) this.value = ''" onblur="if(this.value.replace(' ','') == '') this.value = this.defaultValue;"/>	
+						<div id="showFile_button">
+						<span style="display:inline-block;zoom:1;*display:inline;position:relative; overflow: hidden;">
+						<SCRIPT LANGUAGE="JavaScript">
+						<!--
+							function upload_fz(value) {
+							var obj = /(.*?)\.(doc|ppt|xls|pdf|txt)$/;
+								if(obj.test(value)==false) {
+									alert('格式错误：支持doc、ppt、xls、pdf、txt格式，文件小于5M');
+									return false;
+								}
+								document.getElementById("fileForm").submit();
+							}
+						//-->
+						</SCRIPT>
+						<form id="fileForm" name="fileForm" enctype="multipart/form-data" method="post" target="fileUpload_{SYS_TIME}" action="plugin.php?id=loveit-loveit-upload&type=file">
+						<BR>
+						<input type="file" tabindex="3" title="支持doc、ppt、xls、pdf、txt，文件小于5M" name="upload_file" id="upload_file" onchange="upload_fz(this.value);" style="cursor:pointer;filter:alpha(opacity=0);opacity:0;position:absolute;right:0;height: 34px;">
+						</form>
+						<a class="review_btn" href="javascript:void(0)" >上传</a></span> 请上传小于5M的文档doc/ppt/xls/pdf/txt，如涉及侵权内容，您的文件将被移除
+						<iframe style="display:none" src="about:blank" name="fileUpload_{SYS_TIME}" id="fileUpload_{SYS_TIME}"></iframe>
+						</div>
+						<div id="showFile_submit" style="display:none">
+						附件：<a href="about:blank" id="fileurl_down" target="_blank">点击下载</a><input type="hidden" name="fileurl" id="fileurl" value="">
+
+						<span style="display:inline-block;zoom:1;*display:inline;position:relative; overflow: hidden;"><a class="review_btn" href="javascript:void(0)" onclick="submitFile();">提交</a></span></div>
+                    </div>
+                    <!--/file-->
+                   
+				</div>
+			</div>
+		</article>
+        <!--/mod_editor-->
+		<!--layout_side-->
+		<aside id="tuitanavigate" class="layout_side">
+			<!--mod_side_nav-->
+			<article class="mod_side_nav">
+				<ul class="user_info">
+				{if $_userid!=$userid}
+					<li class="cur" attr="inner:feedLink;inner:focusLink">
+                    	<a attr="click:selFeed" href="{$homepage}"><img alt="动态" class="icon_user_feed" src="{PLUGIN_STATICS_PATH}loveit/img/icon.png">{$username}的分享</a>
+                    </li>
+				{/if}
+                	<li {if $tab==1}class="cur"{/if} attr="inner:feedLink;inner:focusLink">
+                    	<a attr="click:selFeed" href="{$homepage}"><img alt="动态" class="icon_user_feed" src="{PLUGIN_STATICS_PATH}loveit/img/icon.png">我的分享</a>
+                    </li>
+					<li {if $tab==2}class="cur"{/if} attr="inner:selFeed"><a attr="click:selFeed3" href="plugin.php?id=loveit-loveit-mylove"><img src="{PLUGIN_STATICS_PATH}loveit/img/icon.png" class="icon_user_like" alt="我的喜欢">我喜欢的</a></li>
+                </ul>
+				<div class="user_info_title">
+					<a href="{$homepage}">{$_username}</a>
+				</div>
+				<ul class="feed_area">
+					<li><a href="{$homepage}"><img alt="喜欢她" class="icon_my" src="{PLUGIN_STATICS_PATH}loveit/img/icon.png">{ltrim($homepage,'http://')}</a></li>
+				</ul>
+                <div class="email_area">
+                	<h3>给我们提议</h3>
+                    <a target="_blank" href="http://bbs.phpcms.cn">
+						<img alt="联系" class="icon_contact" src="{PLUGIN_STATICS_PATH}loveit/img/icon.png">在线反馈
+					</a>
+                </div>
+			</article>
+			<!--/mod_side_nav-->
+		</aside>
+		<!--/layout_side-->
+		<div class="layout_main">
+		<article class="mod_feeds">
+				<!--feed_group-->
+				<div style="" id="SysMsgBox" class="feed_group hide_face">
+					<!--content-->
+					<div class="content">
+                    	<!--cell_feed_msg-->
+                        <div class="feed cell_feed_msg">
+                        	<h2 class="title">
+                        		<a href="javascript:void(0)" class="know_btn" onclick="close_notice();">我知道了</a>
+                        		系统消息
+                        	</h2>
+							<ul attr="inner:container" class="msg_list">
+
+							<li><a href="http://open.phpcms.cn">PHPCMS开放平台上线了 2011-6-15</a></li><li><a href="http://bbs.phpcms.cn/thread-274047-1-1.html">PHPCMS V9.1 正式版盛大发布 更新日期：2011-6-3</a></li></ul>
+						</div>
+						<!--/cell_feed_msg-->
+					</div>
+
+					<div class="content" id="post_inner"><!--提交后显示--></div>
+					<!--/content-->
+				</div>
+				<!--/feed_group-->
+			</article>
+			<!--mod_feeds-->
+			<article id="feedBlock" class="mod_feeds">
+			{loop $infos $info}
+			<div attr="inner:root" class="feed_group " style="padding-top: 0pt;"><div attr="inner:avatar" class="cell_my_avatar"><p style="background:url({$info[user_face]}) no-repeat;" class="avatar"><a href="http://chenpeng.tuita.com"></a></p></div><div class="content"><div attr="inner:container" class="feed cell_feed_photo_group"><a target="_blank" attr="inner:angle" href="http://chenpeng.tuita.com/blogpost/19878645" class="check_more" style="display: none;">查看全部</a><div class="icon_horn"></div><p class="cell_user_info"><a href="http://chenpeng.tuita.com">{$info[username]}</a> <img title="网站" class="icon_phone" src="{PLUGIN_STATICS_PATH}loveit/img/icon.png" style="display:none;"></p><h2 class="title">{if $info[type]==1}{$info[title]} <BR><img src="{$info[filepath]}" width="560">{elseif $info[type]==2}{$info[title]} - 下载文档：<a href="{$info[filepath]}" target="_blank">点击下载</a>{else}{$info[title]} - {$info[filepath]}{/if}</h2>
+			<div style="display:none" attr="inner:bigPicContent" class="feed_group_big"></div><p class="post_tag"><span class="tags">{date('m-d H:i:s',$info[inputtime])} <a href="">来自PHPCMS开放平台</a> ({$info[num]}) 人喜欢</span><img src="{PLUGIN_STATICS_PATH}loveit/img/icon.png?t=2178319" class="cu icon_ilove_gray" alt="喜欢" title="点击收藏" onclick="loveit(this,{$info[id]});">喜欢</p></div></div></div>
+			{/loop}
+			<div id="attr"></div>
+			</article>
+			<!--/mod_feeds-->
+
+
+	
+		</div>
+	</section>
+<script src="{PLUGIN_STATICS_PATH}loveit/waypoints.min.js"></script>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+	//喜欢她
+	function loveit(obj,id) {
+		
+		$.post("plugin.php?id=loveit-loveit-add_to_mylove", {id: id},
+		  function(data){
+			if(data=='1') {
+				$(obj).removeClass('icon_ilove_gray');
+				$(obj).addClass('icon_ilove_red');
+			} else {
+				alert('添加失败');
+			}
+		});
+	}
+	//显示提交网址
+	function showUrl() {
+		$('#postid').fadeIn();
+		$('#showPic').hide();
+		$('#showFile').hide();
+		$('#showUrl').show();
+	}
+	//提交网址
+	function submitUrl() {
+		var loveurl = $('#loveurl').val();
+		$.post("plugin.php?id=loveit-loveit-submit_url", {loveurl: loveurl },
+		  function(data){
+			$('#post_inner').prepend(data);
+			$('#loveurl').val('http://');
+			 //alert(data);
+		  });
+		 $('#postid').fadeOut();
+	}
+	function cancelSubmitUrl() {
+		$('#postid').fadeOut();
+	}
+	//显示图片上传
+	function showPic() {
+		$('#postid').fadeIn();
+		$('#showUrl').hide();
+		$('#showFile').hide();
+		$('#showPic').show();
+	}
+	
+	//关闭显示
+	function close_notice() {
+		$('#SysMsgBox').fadeOut();
+	}
+	//显示文件上传
+	function showFile() {
+		$('#postid').fadeIn();
+		$('#showUrl').hide();
+		$('#showPic').hide();
+		$('#showFile').show();
+	}
+
+	function pc_screen(param) {
+		$('#showProcessPic').attr("src",param);
+		$('#showProcessPic').LoadImage(true, 660, 660,'{IMG_PATH}s_nopic.gif');
+		$("#showPic_button").css('display','none');
+		$("#showPic_submit").css('display','');
+	}
+function check_activex() {
+  try {
+        // 已安装控件
+        var t = new ActiveXObject("WEBCAPTURECTRL.WebCaptureCtrlCtrl.1");
+        PC_Capture.ShowCaptureWindow();
+    } catch (e)  {
+    	alert('没有安装插件');
+		$('#install_activex').html('<p id="Capture">你还没有安装截图插件！<br />请使用 <a href="http://www.phpcms.cn/capture/" id="CaptureDownWeb" target="_blank">在线安装</a><font>(荐)</font> 或者 <a href="http://www.phpcms.cn/capture/capture.exe" id="CaptureDown" target="_blank">立即下载</a> 方式来安装插件。</p>');
+    }
+}
+function submitImg() {
+	var imgurl = $('#showProcessPic').attr('src');
+	var pic_title = $('#pic_title').val();
+		$.post("plugin.php?id=loveit-loveit-submit_img", {title:pic_title,imgurl: imgurl },
+		  function(data){
+			$('#post_inner').prepend(data);
+		  });
+		$('#postid').fadeOut();
+		$("#showProcessPic").attr('src','{PLUGIN_STATICS_PATH}loveit/img/blank_img.jpg');
+		$("#showPic_button").css('display','');
+		$("#showPic_submit").css('display','none');
+		$('#pic_title').val('标题：');
+}
+function submitFile() {
+	var file_title = $('#file_title').val();
+	var fileurl = $('#fileurl').val();
+		$.post("plugin.php?id=loveit-loveit-submit_file", {title:file_title,fileurl: fileurl },
+		  function(data){
+			$('#post_inner').prepend(data);
+		  });
+		$('#postid').fadeOut();
+		$("#showFile_button").css('display','');
+		$("#showFile_submit").css('display','none');
+		$('#file_title').val('标题：');
+}
+
+//-->
+</SCRIPT>
+
+<div class="ad-unit" data-analyticsid="12345"></div>
+<script type="text/javascript">
+$(document).ready(function() {
+	var page = $("#post_inner").data('page',1);
+	$('.ad-unit').waypoint(function(event) {
+		var page = $("#post_inner").data('page')+1;
+		$("#post_inner").data('page', page);
+		$.getJSON("plugin.php?id=loveit-loveit-ajaxpage", {page:page}, function(json) {
+			if(json!='-1') {
+			$.each(json, function(i,item){
+				$('#attr').append('<div attr="inner:root" class="feed_group " style="padding-top: 0pt;"><div attr="inner:avatar" class="cell_my_avatar"><p style="background:url(http://www.phpsso.cn/uploadfile/avatar/1/1/644/90x90.jpg) no-repeat;" class="avatar"><a href="http://chenpeng.tuita.com"></a></p></div><div class="content"><div attr="inner:container" class="feed cell_feed_photo_group"><a target="_blank" attr="inner:angle" href="http://chenpeng.tuita.com/blogpost/19878645" class="check_more" style="display: none;">查看全部</a><div class="icon_horn"></div><p class="cell_user_info"><a href="http://chenpeng.tuita.com">phpcms</a> <img title="网站" class="icon_phone" src="{PLUGIN_STATICS_PATH}loveit/img/icon.png" style="display:none;"></p><h2 class="title">'+item.data+'</h2><div style="display:none" attr="inner:bigPicContent" class="feed_group_big"></div><p class="post_tag"><span class="tags">27分钟前 <a href="">来自PHPCMS开放平台</a> (53)人喜欢</span><img src="{PLUGIN_STATICS_PATH}loveit/img/icon.png?t=2178319" class="cu icon_ilove_gray" alt="喜欢" title="点击收藏" onclick="loveit(this,65);">喜欢</p></div></div></div>');
+			});
+		}
+		}); 
+		
+	}, {
+		triggerOnce: false,
+		offset: 'bottom-in-view'
+	});
+	
+});
+</script>
+{template "content","footer"}
