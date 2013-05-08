@@ -1244,6 +1244,7 @@ class index extends foreground {
 		}
 		
 	}
+	
     /**
      * QQ号码登录
      * 该函数为QQ登录回调地址
