@@ -1,0 +1,216 @@
+{template "content","header"}
+<!--main-->
+<script type="text/javascript">
+$(function(){
+	$("#KinSlideshow").KinSlideshow({
+			moveStyle:"right",
+			titleBar:{titleBar_height:30,titleBar_bgColor:"#08355c",titleBar_alpha:0.5},
+			titleFont:{TitleFont_size:12,TitleFont_color:"#FFFFFF",TitleFont_weight:"normal"},
+			btn:{btn_bgColor:"#FFFFFF",btn_bgHoverColor:"#1072aa",btn_fontColor:"#000000",btn_fontHoverColor:"#FFFFFF",btn_borderColor:"#cccccc",btn_borderHoverColor:"#1188c0",btn_borderWidth:1}
+	});
+})
+</script>
+
+<div style="width:978px;margin:0 auto;margin-top:-1em;">
+<!--修改了css的news-hot去掉高度属性-->
+<div class="news-hot">
+        	<div class="content">
+        	{pc:content  action="position" posid="2" order="listorder DESC" num="3"}
+        	 {loop $data $r}
+                <h4 class="blue"><a href="{$r[url]}" title="{$r[title]}">{str_cut($r[title],45,'')}</a></h4>
+                <p>{if $n==1}<img src="{thumb($r[thumb],90,60)}" width="90" height="60" alt="{$r[title]}"/>{/if}{str_cut($r[description],200)}</p>
+                <div class="bk20 hr"><hr /></div>
+               {/loop}  
+             {/pc}   
+            </div>
+</div>
+
+ {pc:content  action="position" posid="1"  order="listorder DESC" thumb="1" num="5"}			
+    <div id="KinSlideshow" style="visibility:hidden;">
+	 {loop $data $r}
+        <a href="{$r['url']}" title="{str_cut($r['title'],50)}" target="_blank"><img src="{thumb($r['thumb'],578,335)}" 
+		alt="{$r['title']}" width="578" height="335" /></a>
+  	  {/loop}
+    </div>
+  {/pc}
+  
+</div>
+	<div class="zstart-aux">
+		<div class="zstart-cols">
+			<!-- 文章内容  -->
+			<div class="zstart-col-01">
+				<div class="tab-content">
+					{pc:content  action="lists" catid="6" order="updatetime DESC" thumb="1" num="15" page="$_GET[page]" return="info"}
+					{loop $info $v}
+					<div class="zpost clearfix">
+						<div class="pic">
+							<a class="thumbnail"
+								href="{$v['url']}" target="_blank">
+								<img src="{thumb($v[thumb],90,67)}" width="90" height="67" alt="{$v['title']}"/>
+							</a>
+						</div>
+						<div class="zheader">
+							<div class="zcomment-number">
+								<span class="number">
+									<a
+										href="{$v['url']}">{L('read')}</a>
+								</span>
+								<span class="corner"></span>
+							</div>
+							<h2 class="ztitle yahei">
+								<a target="_blank"
+									href="{$v['url']}"
+									rel="external">{str_cut($v['title'],60)}</a>
+							</h2>
+						</div>
+						<div class="zpost-detail ">
+							<p>{str_cut($v['description'],200)}
+							</p>
+							<br />
+							<span class="zpost-info">
+								<span class="new_time">
+									<i class="icon-time"></i>
+									{date('Y-m-d h:i:s',$r[inputtime])}
+								</span>
+								|
+								<span class="new_laiyuan">
+									<i class="icon-list-alt"></i>
+									{L('author')}：{$v[username]}
+								</span>
+							</span>
+						</div>
+					</div>		
+					 {/loop}
+                     {/pc}
+					 		
+				</div>
+				
+				<!--分页-->
+				<div id="pages" class="text-c">{$pages}</div>
+				
+			</div>
+		
+			
+			<div class="zstart-col-04">
+			   	     
+       	      	<!--系统公告-->
+				<div class="wiget-title clearfix">
+					<h2><font color="#FF0000">{L('annoceun')}</font></h2>
+					<span class="bg_c">&nbsp;</span>
+				</div>
+				<div class="wiget-box">
+				 {pc:announce  action="lists" siteid="$siteid" num="5"}
+				 <ul class="widget-posts-thumbnail">
+                  {loop $data $r}	
+					<br /><li class="clearfix"><a href="{APP_PATH}index.php?m=announce&c=index&a=show&aid={$r['aid']}">{$r['title']}</a></li>
+				 {/loop}
+				 </ul>
+				{/pc}
+				
+				</div>
+       	     
+       	     
+   	            <!--测试专题-->	
+				<div class="wiget-title clearfix">
+					<h2>{L('special')}</h2>
+					<span class="bg_c">&nbsp;</span>
+				</div>
+				<div class="wiget-box">
+					<ul class="widget-posts-thumbnail">
+					 {pc:special  action="lists"  elite="1" listorder="3" num="2"}
+                     {loop $data $r}
+						<li class="clearfix">
+						    <br />
+							<h4>
+								<a href="{$r[url]}" target="_blank">{str_cut($r[title],'50')}</a>
+							</h4>
+							<br />
+							<div class="wiget-box-sum">
+								<a href="{$r[url]}">
+									<img class="dream-img"
+										src="{thumb($r[thumb],90,67)}" width="90"   height="67"  alt="{$r[title]}">
+								</a>
+								<p>{str_cut($r['description'],50)}</p>
+							</div>
+						</li>
+						{/loop}
+                        {/pc}
+					</ul>
+				</div>
+             
+             
+				<div class="wiget-title clearfix">
+					<h2>{L('hot_c_readboard')}</h2>
+					<span class="bg_c">&nbsp;</span>
+				</div>
+				<div class="wiget-box">
+					<ul id="recent_hots">
+					{pc:comment action="bang" num="10"}
+				    {loop $data $key $val}
+				    
+							 <li><a href="{$val[url]}">{$val[title]}</a><FONT color="red">({$val[total]})</FONT></li>
+					
+						{/loop}
+			            {/pc}
+					</ul>
+				</div>
+
+				<div class="wiget-title clearfix">
+					<h2>{L('hot_article_list')}</h2>
+					<span class="bg_c">&nbsp;</span>
+				</div>
+				<div class="wiget-box">
+					<ul class="widget-posts-thumbnail">
+						{pc:content action="hits" catid="6" num="7" order="views DESC"}
+				        {loop $data $r}
+						<li class="clearfix">
+							<div class="widget-thumb">
+								<a class=""
+									href="{$r[url]}">
+									<img
+										src="{thumb($r[thumb],90,40)}"
+										 class="widget-thumb" width="90" height="40" alt="{$r[title]}">
+								</a>
+							</div>
+							<a href="{$r[url]}"
+								class="widget-thumb-title" target="_blank">{$r[title]}</a>
+						</li>
+						{/loop}
+			            {/pc}
+					</ul>
+				</div>
+				
+			<div class="bk10"></div>	
+			<div class="box">
+				<h5 class="title-2">
+					{L('questionnaire')}
+					<a href="{APP_PATH}index.php?m=vote&c=index&siteid={$siteid}"
+						class="more">{L('more')}>></a>
+				</h5>
+				<script language="javascript"
+					src="{APP_PATH}index.php?m=vote&c=index&a=show&action=js&subjectid=1&type=3"></script>
+			</div>
+
+		</div>
+		</div>
+	</div>
+<div class="g4e-grid">
+  <div id="zstart-footer" class="zstart-footer">
+    <div id="zstart-footer-t">
+      <div class="zstart-aux">
+        <div id="footer">
+          <div class="footer clearfix">
+            <ul class="things unstyled clearfix">
+			 {pc:link  action="type_list" siteid="$siteid" linktype="1" order="listorder DESC" num="8" return="pic_link"}
+			 {loop $pic_link $v}
+              <li class="weibo"> <a href="{$v['url']}" title="{$v['name']}" target="_blank"> <span class="icon"></span>
+              <img src="{$v[logo]}" width="88" height="31" alt="{$v['name']}"/>
+                </a></li>
+			 {/loop}
+             {/pc}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+{template "content","footer"}

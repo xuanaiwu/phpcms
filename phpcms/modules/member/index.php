@@ -872,7 +872,7 @@ class index extends foreground {
 		//$snda_enable = pc_base::load_config('system', 'snda_enable');
 		include template('member', 'mini');
 	}
-	
+		
 	/**
 	 * 初始化phpsso
 	 * about phpsso, include client and client configure

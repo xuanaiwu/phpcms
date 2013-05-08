@@ -1,0 +1,19 @@
+<br />
+<div class="nav-bottom">
+      <div class="company-info">
+	   <span style="float:left">{L('copyright')}</span>
+	   <span style="float:right">
+	   
+	   {pc:content action="category" catid="1" num="15" siteid="$siteid" order="listorder ASC"}
+	   {loop $data $r}
+			<a href="{$r[url]}" target="_blank">{$r[catname]}</a> |  
+		{/loop}
+		{/pc}
+	   <a target="_blank" href="{APP_PATH}index.php?m=link">{L('link')}</a> 
+	   </span>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

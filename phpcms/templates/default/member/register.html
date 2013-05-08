@@ -348,7 +348,7 @@ function show_protocol() {
 {elseif isset($_GET['t']) && $_GET['t']==2}
 <div class="col-left form-login form-reg">
 {php $emailurl = param::get_cookie('email') ? str_replace('@', '',strstr(param::get_cookie('email'), '@')) : '';}
-{param::get_cookie('_username')} {L('hellow')}，{L('login_email_authentication')} {if $emailurl} {L('please_click')}<a href="http://mail.{$emailurl}">{L('login_email')}</a><br><br>
+{param::get_cookie('_username')} {L('hellow')}{L('login_email_authentication')} {if $emailurl} {L('please_click')}<a href="http://mail.{$emailurl}">{L('login_email')}</a><br><br>
 重新填写邮箱请点击<a onclick="$('#send_newemail').show()"><font color="red">这里</font></a><br><br>
 <div style="display:none" id="send_newemail">
 <input type="text" id="newemail" name="newemail" size="36" class="input-text"> 

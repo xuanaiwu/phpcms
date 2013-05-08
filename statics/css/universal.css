@@ -1059,7 +1059,7 @@ li {
   border-top: 1px dotted #BBBBBB
 }
 .articlelist li {
-    background: url("http://img.chinaz.com/templates/chinaz/img/b1.gif") no-repeat scroll 0 50% transparent;
+    background: #FFFFFF;
     overflow: hidden;
     padding-left: 12px;
     text-overflow: ellipsis;
