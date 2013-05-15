@@ -872,7 +872,7 @@ class index extends foreground {
 		//$snda_enable = pc_base::load_config('system', 'snda_enable');
 		include template('member', 'mini');
 	}
-		
+	
 	/**
 	 * 初始化phpsso
 	 * about phpsso, include client and client configure
@@ -1244,7 +1244,6 @@ class index extends foreground {
 		}
 		
 	}
-	
     /**
      * QQ号码登录
      * 该函数为QQ登录回调地址
@@ -1320,18 +1319,56 @@ class index extends foreground {
     				$forward = isset($_POST['forward']) && !empty($_POST['forward']) ? urldecode($_POST['forward']) : 'index.php?m=member&c=index';
     				showmessage(L('login_success').$synloginstr, $forward);
     			}else{
-    				//未存在于数据库中，跳去完善资料页面。页面预置用户名（QQ返回是UTF8编码，如有需要进行转码）
-    				$_SESSION['connectid'] = $_SESSION['openid'];
-    				$_SESSION['from'] = 'qq';
-    				
-    				$connect_username = 'qq'.SYS_TIME;
-    				$connect_password = create_randompass();
+    				//未存在于数据库中，为该QQ用户生成一个随机帐号
     				$connect_nickname=$user->nickname;
     				if(CHARSET != 'utf-8') {//转编码
     					$connect_nickname = iconv('utf-8', CHARSET, $user->nickname);
     				}
-    				include template('member', 'connect');
+    				$userinfo = array();
+    				$userinfo['encrypt'] = create_randomstr(6);
+    				$userinfo['username'] = 'temp'.SYS_TIME;
+    				$userinfo['nickname'] = $connect_nickname;
+    				//$userinfo['email'] = 'test@test.com';
+    				$userinfo['password'] = create_randompass();
+    				$userinfo['modelid'] = isset($_POST['modelid']) ? intval($_POST['modelid']) : 10;
+    				$userinfo['regip'] = ip();
+    				$userinfo['point'] =  0;
+    				$userinfo['amount'] = 0;
+    				$userinfo['regdate'] = $userinfo['lastdate'] = SYS_TIME;
+    				$userinfo['siteid'] = 1;
+    				$userinfo['groupid']= 2;
+    				$userinfo['connectid'] = $_SESSION['openid'];
+    				$userinfo['from'] = 'qq';
+    				unset($_SESSION['openid']);
+    				$this->_init_phpsso();
+    				$status = $this->client->ps_member_register($userinfo['username'], $userinfo['password'],'inave@inave.cn', $userinfo['regip'], $userinfo['encrypt']);
+    				if($status > 0) {
+    					$userinfo['phpssouid'] = $status;
+    				    //传入phpsso为明文密码，加密后存入phpcms_v9
+    					$userinfo['password'] = password($userinfo['password'], $userinfo['encrypt']);
+    					$userid = $this->db->insert($userinfo, 1);		
+    					if($userid > 0) {
+    						//执行登陆操作
+    					    if(!$cookietime) $get_cookietime = param::get_cookie('cookietime');
+    						$_cookietime = $cookietime ? intval($cookietime) : ($get_cookietime ? $get_cookietime : 0);
+    						$cookietime = $_cookietime ? TIME + $_cookietime : 0;
     				
+    						$phpcms_auth_key = md5(pc_base::load_config('system', 'auth_key').$this->http_user_agent);
+    						$phpcms_auth = sys_auth($userid."\t".$userinfo['password'], 'ENCODE', $phpcms_auth_key);
+    									
+    						param::set_cookie('auth', $phpcms_auth, $cookietime);
+    						param::set_cookie('_userid', $userid, $cookietime);
+    						param::set_cookie('_username', $userinfo['username'], $cookietime);
+    						param::set_cookie('_nickname', $userinfo['nickname'], $cookietime);
+    						param::set_cookie('_groupid', $userinfo['groupid'], $cookietime);
+    					    param::set_cookie('cookietime', $_cookietime, $cookietime);
+    					    $synloginstr = $this->client->ps_member_synlogin($userinfo['phpssouid']);
+    					    showmessage(L('operation_success').$synloginstr, 'index.php?m=member&c=index&a=init');				    
+    				    }
+    				    showmessage(L('login_failure'), 'index.php?m=member&c=index&a=login');
+    				    
+    			   }
+    			   showmessage(L('operation_failure'),'index.php?m=member&c=index&a=login');
     			}
     		}
     	}

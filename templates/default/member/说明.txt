@@ -1,2 +1,0 @@
-会员中心左侧菜单栏由两个模版组成，分别是：account_manage_left.html和left.html。
-会员信息帐号信息同时存在account_manage.html和index.html两个文件中，需要同时修改。
