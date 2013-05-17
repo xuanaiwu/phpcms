@@ -1688,7 +1688,7 @@ li {
     width: 31.8452%;
 }
 .zstart-col-left{ }
-.zstart-col-01{ float: left;width: 580px;padding: 0px 20px 20px 13px;border-right:1px solid #eee; }
+.zstart-col-01{ float: left;width: 580px;padding: 0px 20px 20px 13px;border-right:1px solid #fff; }
 .zstart-col-04{ float: right;width: 370px;margin:0 15px 20px 0; }
 
 .wiget-title{margin:20px 0 0;display: block;}
@@ -1943,7 +1943,7 @@ body fieldset.blue legend{padding:3px 8px;font-weight:700;color:#347add; backgro
 .blogroll {}
 .blogroll h5{ background:none; font-size:12px; margin:0 2px}
 /* 当前位置 */
-.crumbs{background: url(../images/v9/icon.png) no-repeat left -38px; padding:3px 0 3px 18px; font-family:"宋体"; border-bottom:1px solid #c3d4e7; margin-bottom:10px}
+.crumbs{background: url(../images/v9/icon.png) no-repeat left -38px; padding:3px 0 3px 18px; font-family:"宋体"; border-bottom:1px solid #5E94FF; margin-bottom:10px}
 .crumbs span{color:#7e7e7e}
 /* 栏目信息搜索 */
 .search-form{ background-color:#FFFCED;border:1px solid #FFBF7A; padding:5px 10px; overflow:hidden;zoom:1}
@@ -1960,11 +1960,11 @@ body fieldset.blue legend{padding:3px 8px;font-weight:700;color:#347add; backgro
 /* 新闻频道 */
 .main .channel-hot{width:450px}
 .channel-hot .news-hot,.channel-hot .news-hot .icon,.photo-slide,.photo-channel .photo-hots,.box-hots,.box-hots .icon,.photo-channel .photo-hots .icon,.photo-channel .photo-cat,.photo-channel #Article,.photo-channel .relevance,.comment{background: url(../images/v9/cat_hot_bg.png) repeat-x left -38px}
-.channel-hot .news-hot,.photo-channel .photo-hots,.photo-channel .photo-cat,.box-hots{width: auto; position:relative; border:1px solid #c3d4e7; margin:0; height:302px}
+.channel-hot .news-hot,.photo-channel .photo-hots,.photo-channel .photo-cat,.box-hots{width: auto; position:relative; border:1px solid #5E94FF; margin:0; height:302px}
 .channel-hot .news-hot .icon,.photo-channel .photo-hots .icon,.box-hots .icon{position:absolute;top:0px;left:0;width:37px;height:37px;background-position: left top;background-repeat: no-repeat}
 .channel-hot .news-hot{width:450px}
 .channel-hot .news-hot div.hr{width:422px}
-.channel-slide{border:1px solid #c3d4e7; padding:3px}
+.channel-slide{border:1px solid #5E94FF; padding:3px}
 .channel-slide .thumb{ width:94px; float:left}
 .channel-slide .thumb li{ margin-top:4px; position:relative}
 .channel-slide .thumb li a .icon{display:none}
@@ -1978,7 +1978,7 @@ body fieldset.blue legend{padding:3px 8px;font-weight:700;color:#347add; backgro
 .channel-slide .title p strong{font-size:18px; color:#0066cc; line-height:22px}
 
 /* 图片频道 - photo */
-.photo-channel .photo-slide{ width:435px; padding:5px;border:1px solid #c3d4e7;zoom:1;}
+.photo-channel .photo-slide{ width:435px; padding:5px;border:1px solid #5E94FF;zoom:1;}
 .photo-channel .photo-slide .FocusPic .title-bg,.photo-channel .photo-slide .FocusPic .title{ bottom:35px}
 .photo-channel .photo-slide .change{bottom:0px; left:0; text-align:left; height:30px;}
 .photo-channel .photo-slide .change i{background: url(../images/v9/focusBg.gif) no-repeat right top; width:39px; height:30px; text-align:center; padding:0; margin-right:8px; line-height:30px;color:#049}
@@ -2049,11 +2049,11 @@ body fieldset.blue legend{padding:3px 8px;font-weight:700;color:#347add; backgro
 .rss-channel .xml .rss dd{height:16px; line-height:16px; padding:5px 0}
 .rss-channel .xml .rss dd a{ padding-left:14px;background-position: 5px -258px;}
 .rss-channel .xml .cur{width:65px; z-index:2}
-.rss-channel .xml .cur dl{width:65px;border:1px solid #C3D4E7; position: absolute; top:-1px; right:-1px;  background-color:#fff; z-index:999;overflow:visible; height:auto}
+.rss-channel .xml .cur dl{width:65px;border:1px solid #5E94FF; position: absolute; top:-1px; right:-1px;  background-color:#fff; z-index:999;overflow:visible; height:auto}
 .rss-channel .xml .cur dd{border-top:1px dashed #DCDDDD;}
 /* 内容 */
 #Article{ overflow:hidden}
-#Article,.photo-channel .relevance{ border:1px solid #C3D4E7;zoom:1; padding:0 20px}
+#Article,.photo-channel .relevance{ border:1px solid #5E94FF;zoom:1; padding:0 20px}
 #Article h1{color:#000;font:800 26px/30px "宋体",arial;margin-bottom:6px; text-align:center; padding:16px 0 8px; border-bottom:1px solid #e5e5e5}
 #Article h1 span{ font-size:12px; font-weight:normal; line-height:20px; color:#999}
 #Article .content{ font-size:14px}
@@ -2062,7 +2062,7 @@ body fieldset.blue legend{padding:3px 8px;font-weight:700;color:#347add; backgro
 #Article .related h5{padding-bottom:4px}
 #Article .related{ padding:10px 0 0}
 #Article .related a{ color:#0b3b8c}
-.Article-Tool{ border:1px solid #c3d4e7; position:relative; top:-1px; text-align:right; padding:8px; vertical-align:middle; height:15px; background-color:#f4f8fd}
+.Article-Tool{ border:1px solid #5E94FF; position:relative; top:-1px; text-align:right; padding:8px; vertical-align:middle; height:15px; background-color:#f4f8fd}
 .Article-Tool a{width:16px;height:16px;line-height:16px;background: url(../images/v9/icon.png) no-repeat; margin-left:6px;}
 .Article-Tool a:hover{text-decoration: none}
 .Article-Tool a.t,.Article-Tool a.t6{background-position: left -336px; width:auto; padding-left:16px; color:#8896b1}
@@ -2157,13 +2157,13 @@ body fieldset.blue legend{padding:3px 8px;font-weight:700;color:#347add; backgro
 /* 广告位 */
 .ads{padding-top:8px}
 .ads .col-left{width:748px;}
-.ads .col-auto{border:1px solid #c3d4e7; padding:1px;width:198px}
+.ads .col-auto{border:1px solid #5E94FF; padding:1px;width:198px}
 .ads .col-auto div.left{float:left; background:#dce2ea; width:20px; margin-right:8px; text-align:center; height:83px; padding-top:5px}
 .ads .col-auto div.right{overflow:hidden; }
 
 /* 评论-form */
-.comment-form{border:1px solid #c3d4e7; padding:10px 20px; margin-bottom:10px}
-.comment-form h5{ height:22px; padding-bottom:5px;border-bottom:1px solid #C3D4E7;}
+.comment-form{border:1px solid #5E94FF; padding:10px 20px; margin-bottom:10px}
+.comment-form h5{ height:22px; padding-bottom:5px;border-bottom:1px solid #5E94FF;}
 .comment-form strong{background: url(../images/icon/user_comment.png) no-repeat; padding-left:21px; float:left}
 .yzm{display:none;position:absolute; background:url(../images/admin_img/login_ts140x89.gif) no-repeat; width:140px; height:89px;text-align:center; font-size:12px;}
 	.yzm a:link,.yzm a:visited{color:#036;text-decoration:none;}
@@ -2173,15 +2173,15 @@ body fieldset.blue legend{padding:3px 8px;font-weight:700;color:#347add; backgro
 .comment-form .posn{ padding:10px 0}
 .comment-title{ text-align:center; padding:5px 0 10px}
 .comment-title a:hover{	text-decoration: none;	color: #F60;}
-.comment{border:1px solid #C3D4E7;zoom:1;  padding:8px 15px}
-.comment h4{ border-bottom:1px solid #C3D4E7; padding-bottom:6px; margin-bottom:15px}
+.comment{border:1px solid #5E94FF;zoom:1;  padding:8px 15px}
+.comment h4{ border-bottom:1px solid #5E94FF; padding-bottom:6px; margin-bottom:15px}
 
 .comment .title{ margin-bottom:5px}
 .comment .title span{ position:relative; top:-5px}
 .comment .content{ font-size:14px; background:#f6f9fb; border:1px solid #c4d5df; zoom:1; padding:8px 10px; margin:5px 0}
 .comment .content span{display:block;}
 .comment_button{margin-bottom:15px;}
-.comment_button a{padding:5px; border:solid 1px #C3D4E7; }
+.comment_button a{padding:5px; border:solid 1px #5E94FF; }
 .comment_button a.on{background:#4C7FB6; color:#fff;border:solid 1px #3E73A9}
 
 

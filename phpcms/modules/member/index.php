@@ -1151,14 +1151,55 @@ class index extends foreground {
 					showmessage(L('login_success').$synloginstr, $forward);
 					
 				} else {
- 					//弹出绑定注册页面
-					$_SESSION = array();
-					$_SESSION['connectid'] = $uid;
-					$_SESSION['from'] = 'sina';
-					$connect_username = 'sina'.SYS_TIME;
-					$connect_password = create_randompass();
-					$connect_nickname = $me['screen_name'];
-					include template('member', 'connect');
+					//未存在于数据库中，为该新浪微博用户生成一个随机帐号
+					$connect_nickname=$me['screen_name'];
+					if(CHARSET != 'utf-8') {//转编码
+						$connect_nickname = iconv('utf-8', CHARSET, $me['screen_name']);
+					}
+					$userinfo = array();
+					$userinfo['encrypt'] = create_randomstr(6);
+					$userinfo['username'] = 'sina'.SYS_TIME;
+					$userinfo['nickname'] = $connect_nickname;
+					$userinfo['password'] = create_randompass();
+					$userinfo['modelid'] = isset($_POST['modelid']) ? intval($_POST['modelid']) : 10;
+					$userinfo['regip'] = ip();
+					$userinfo['point'] =  0;
+					$userinfo['amount'] = 0;
+					$userinfo['regdate'] = $userinfo['lastdate'] = SYS_TIME;
+					$userinfo['siteid'] = 1;
+					$userinfo['groupid']= 2;
+					$userinfo['connectid'] = $uid;
+					$userinfo['from'] = 'sina';
+					$temp_email=SYS_TIME.'@inave.cn';
+					$this->_init_phpsso();
+					$status = $this->client->ps_member_register($userinfo['username'], $userinfo['password'],$temp_email, $userinfo['regip'], $userinfo['encrypt']);
+					if($status > 0) {
+						$userinfo['phpssouid'] = $status;
+						//传入phpsso为明文密码，加密后存入phpcms_v9
+						$userinfo['password'] = password($userinfo['password'], $userinfo['encrypt']);
+						$userid = $this->db->insert($userinfo, 1);
+						if($userid > 0) {
+							//执行登陆操作
+							if(!$cookietime) $get_cookietime = param::get_cookie('cookietime');
+							$_cookietime = $cookietime ? intval($cookietime) : ($get_cookietime ? $get_cookietime : 0);
+							$cookietime = $_cookietime ? TIME + $_cookietime : 0;
+					
+							$phpcms_auth_key = md5(pc_base::load_config('system', 'auth_key').$this->http_user_agent);
+							$phpcms_auth = sys_auth($userid."\t".$userinfo['password'], 'ENCODE', $phpcms_auth_key);
+								
+							param::set_cookie('auth', $phpcms_auth, $cookietime);
+							param::set_cookie('_userid', $userid, $cookietime);
+							param::set_cookie('_username', $userinfo['username'], $cookietime);
+							param::set_cookie('_nickname', $userinfo['nickname'], $cookietime);
+							param::set_cookie('_groupid', $userinfo['groupid'], $cookietime);
+							param::set_cookie('cookietime', $_cookietime, $cookietime);
+							$synloginstr = $this->client->ps_member_synlogin($userinfo['phpssouid']);
+							showmessage(L('operation_success').$synloginstr, 'index.php?m=member&c=index&a=init');
+						}
+						showmessage(L('login_failure'), 'index.php?m=member&c=index&a=login');
+					
+					}
+					showmessage(L('operation_failure'),'index.php?m=member&c=index&a=login');
 				}
 			} else {
 				showmessage(L('authorize_getweibouserid_faliure'), 'index.php?m=member&c=index&a=login');
@@ -1339,9 +1380,10 @@ class index extends foreground {
     				$userinfo['groupid']= 2;
     				$userinfo['connectid'] = $_SESSION['openid'];
     				$userinfo['from'] = 'qq';
+    				$temp_email=SYS_TIME.'@inave.cn';
     				unset($_SESSION['openid']);
     				$this->_init_phpsso();
-    				$status = $this->client->ps_member_register($userinfo['username'], $userinfo['password'],'inave@inave.cn', $userinfo['regip'], $userinfo['encrypt']);
+    				$status = $this->client->ps_member_register($userinfo['username'], $userinfo['password'],$temp_email, $userinfo['regip'], $userinfo['encrypt']);
     				if($status > 0) {
     					$userinfo['phpssouid'] = $status;
     				    //传入phpsso为明文密码，加密后存入phpcms_v9

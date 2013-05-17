@@ -202,7 +202,9 @@ include $this->admin_tpl('header');?>
     <th><?php echo L('setting_connect_sina')?></th>
     <td class="y-bg">
 	App key <input type="text" class="input-text" name="setconfig[sina_akey]" id="sina_akey" size="20" value="<?php echo $sina_akey ?>"/>
-	App secret key <input type="text" class="input-text" name="setconfig[sina_skey]" id="sina_skey" size="40" value="<?php echo $sina_skey ?>"/> <a href="http://open.t.sina.com.cn/wiki/index.php/<?php echo L('connect_micro')?>" target="_blank"><?php echo L('click_register')?></a>
+	App secret key <input type="text" class="input-text" name="setconfig[sina_skey]" id="sina_skey" size="40" value="<?php echo $sina_skey ?>"/> 
+	<?php echo L('setting_connect_sinacallback')?> <input type="text" class="input-text" name="setconfig[sina_callback]" id="sina_callback" size="40" value="<?php echo $sina_callback;?>"/>
+	<a href="http://open.t.sina.com.cn/wiki/index.php/<?php echo L('connect_micro')?>" target="_blank"><?php echo L('click_register')?></a>
 	</td>
   </tr>
 
